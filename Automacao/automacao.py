@@ -226,13 +226,11 @@ class Requests:
                 df_clean.to_excel(writer, sheet_name='Beneficios', index=False)
                 worksheet_beneficios = writer.sheets['Beneficios']
                 
-                # Aplica formato de moeda na coluna de valor (Coluna I)
-                # Este formato mostra negativos em vermelho com parênteses
+                # Aplica formato de moeda na coluna de valor
                 currency_format = 'R$ #,##0.00;[Red]-R$ #,##0.00'
                 for cell in worksheet_beneficios['I']:
-                    if not cell.row == 1: # Pula o cabeçalho
+                    if not cell.row == 1:
                         cell.number_format = currency_format
-                
                 # Ajusta a largura das colunas na primeira aba
                 auto_adjust_column_width(worksheet_beneficios)
 
